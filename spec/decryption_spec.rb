@@ -5,15 +5,21 @@ require_relative '../lib/offset'
 
 RSpec.describe Decryption do
   before :each do
-    @decryption = Decryption.new('keder ohulw!', '02715', '040895')
+    @key = Key.new('02715')
+    @date = Offset.new('040895')
+    @decryption = Decryption.new('keder ohulw!', @key, @date)
   end
 
   describe 'Instantiation' do
     it 'exists' do
       expect(@decryption).to be_a(Decryption)
     end
+    it 'has attributes' do
+      expect(@decryption.key.class).to eq(Key)
+      expect(@decryption.date.class).to eq(Offset)
+    end
   end
-  
+
   describe 'Methods' do
     it 'can generate final shift' do
       expect(@decryption.generate_final_shift).to eq([3, 0, 19, 20])
