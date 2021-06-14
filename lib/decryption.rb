@@ -1,19 +1,20 @@
+require_relative 'key'
+require_relative 'offset'
+
 class Decryption
 
-  attr_reader :message, :key, :date, :char_set
+  attr_reader :message, :char_set
 
   def initialize(message, key, date)
     @message = message
-    @key = key
-    @date = date
+    @key = Key.new(key)
+    @offset = Offset.new(date)
     @char_set = ("a".."z").to_a << " "
   end
 
   def generate_final_shift
-    keys = Key.new(key)
-    offsets = Offset.new(date)
-    temp = keys.key_shift.map.with_index do |key, index|
-      key + offsets.offset_shift[index]
+    temp = @key.key_shift.map.with_index do |key, index|
+      key + @offset.offset_shift[index]
     end
     temp.map do |num|
       if num < 27
