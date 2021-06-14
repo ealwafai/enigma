@@ -5,12 +5,18 @@ require_relative '../lib/offset'
 
 RSpec.describe Encryption do
   before :each do
-    @encryption = Encryption.new('Hello World!', '02715', '040895')
+    @key = Key.new('02715')
+    @date = Offset.new('040895')
+    @encryption = Encryption.new('Hello World!', @key, @date)
   end
 
   describe 'Instantiation' do
     it 'exists' do
       expect(@encryption).to be_a(Encryption)
+    end
+    it 'has attributes' do
+      expect(@encryption.key.class).to eq(Key)
+      expect(@encryption.date.class).to eq(Offset)
     end
   end
 
