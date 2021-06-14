@@ -3,18 +3,18 @@ require_relative 'offset'
 
 class Encryption
 
-  attr_reader :message, :char_set
+  attr_reader :message, :key, :date, :char_set
 
-  def initialize(message, key, date)
+  def initialize(message, key = Key.new, date = Offset.new)
     @message = message.downcase
-    @key = Key.new(key)
-    @offset = Offset.new(date)
+    @key = key
+    @date = date
     @char_set = ("a".."z").to_a << " "
   end
 
   def generate_final_shift
     temp = @key.key_shift.map.with_index do |key, index|
-      key + @offset.offset_shift[index]
+      key + @date.offset_shift[index]
     end
     temp.map do |num|
       if num < 27
