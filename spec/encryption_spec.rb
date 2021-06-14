@@ -12,13 +12,8 @@ RSpec.describe Encryption do
     it 'exists' do
       expect(@encryption).to be_a(Encryption)
     end
-
-    it 'has attributes' do
-      expect(@encryption.message).to eq('hello world!')
-      expect(@encryption.key).to eq('02715')
-      expect(@encryption.date).to eq('040895')
-    end
   end
+
   describe 'Methods' do
     it 'can generate final shift' do
       expect(@encryption.generate_final_shift).to eq([3, 0, 19, 20])
