@@ -6,13 +6,13 @@ RSpec.describe Enigma do
     @enigma = Enigma.new
   end
 
-  Describe 'Instantiation' do
+  describe 'Instantiation' do
     it 'exists' do
       expect(@enigma).to be_a(Enigma)
     end
   end
 
-  Describe 'Methods' do
+  describe 'Methods' do
     it 'encrypts message' do
       expected = {
                   encryption: "keder ohulw",
