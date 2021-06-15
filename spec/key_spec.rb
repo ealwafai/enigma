@@ -28,7 +28,7 @@ RSpec.describe Key do
 
       random_key = Key.new
 
-      expect(random_key.key).to eq('12345')
+      expect(random_key.generate_key).to eq('12345')
       expect(random_key.key.length).to eq(5)
     end
 
