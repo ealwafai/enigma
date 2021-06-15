@@ -38,11 +38,7 @@ RSpec.describe Decryption do
     end
 
     it 'can decode' do
-      expect(@decryption.decode).to eq(["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"])
-    end
-
-    it 'can join the letters' do
-      expect(@decryption.decrypted_text).to eq('hello world!')
+      expect(@decryption.decode).to eq('hello world!')
     end
   end
 end
