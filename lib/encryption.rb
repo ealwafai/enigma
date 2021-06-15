@@ -61,10 +61,6 @@ class Encryption
         end
       end
     end
-    encoded_message
-  end
-
-  def encrypted_text
-    encode.join
+    encoded_message.join
   end
 end
