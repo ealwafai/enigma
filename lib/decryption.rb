@@ -61,10 +61,6 @@ class Decryption
         end
       end
     end
-    decoded_message
+    decoded_message.join
   end
-
-    def decrypted_text
-      decode.join
-    end
 end
