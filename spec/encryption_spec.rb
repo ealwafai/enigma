@@ -38,11 +38,7 @@ RSpec.describe Encryption do
     end
 
     it 'can encode' do
-      expect(@encryption.encode).to eq(["k", "e", "d", "e", "r", " ", "o", "h", "u", "l", "w", "!"])
-    end
-
-    it 'can join the letters' do
-      expect(@encryption.encrypted_text).to eq("keder ohulw!")
+      expect(@encryption.encode).to eq('keder ohulw!')
     end
   end
 end
