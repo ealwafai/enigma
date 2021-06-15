@@ -1,8 +1,11 @@
+require_relative 'key'
+require_relative 'offset'
+
 class Encryption
 
   attr_reader :message, :key, :date, :char_set
 
-  def initialize(message, key, date)
+  def initialize(message, key = Key.new, date = Offset.new)
     @message = message.downcase
     @key = key
     @date = date
@@ -10,10 +13,8 @@ class Encryption
   end
 
   def generate_final_shift
-    keys = Key.new(key)
-    offsets = Offset.new(date)
-    temp = keys.key_shift.map.with_index do |key, index|
-      key + offsets.offset_shift[index]
+    temp = @key.key_shift.map.with_index do |key, index|
+      key + @date.offset_shift[index]
     end
     temp.map do |num|
       if num < 27
@@ -60,10 +61,6 @@ class Encryption
         end
       end
     end
-    encoded_message
-  end
-
-  def encrypted_text
-    encode.join
+    encoded_message.join
   end
 end

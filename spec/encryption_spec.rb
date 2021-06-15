@@ -5,20 +5,21 @@ require_relative '../lib/offset'
 
 RSpec.describe Encryption do
   before :each do
-    @encryption = Encryption.new('Hello World!', '02715', '040895')
+    @key = Key.new('02715')
+    @date = Offset.new('040895')
+    @encryption = Encryption.new('Hello World!', @key, @date)
   end
 
   describe 'Instantiation' do
     it 'exists' do
       expect(@encryption).to be_a(Encryption)
     end
-
     it 'has attributes' do
-      expect(@encryption.message).to eq('hello world!')
-      expect(@encryption.key).to eq('02715')
-      expect(@encryption.date).to eq('040895')
+      expect(@encryption.key.class).to eq(Key)
+      expect(@encryption.date.class).to eq(Offset)
     end
   end
+
   describe 'Methods' do
     it 'can generate final shift' do
       expect(@encryption.generate_final_shift).to eq([3, 0, 19, 20])
@@ -37,11 +38,7 @@ RSpec.describe Encryption do
     end
 
     it 'can encode' do
-      expect(@encryption.encode).to eq(["k", "e", "d", "e", "r", " ", "o", "h", "u", "l", "w", "!"])
-    end
-
-    it 'can join the letters' do
-      expect(@encryption.encrypted_text).to eq("keder ohulw!")
+      expect(@encryption.encode).to eq('keder ohulw!')
     end
   end
 end
