@@ -22,7 +22,7 @@ RSpec.describe Offset do
 
       today_date = Offset.new
 
-      expect(today_date.date).to eq('140621')
+      expect(today_date.today_date).to eq('140621')
     end
 
     it 'can square the date' do
