@@ -7,7 +7,9 @@ class Key
   end
 
   def generate_key
-    5.times.map {(0..9).to_a.sample}.join
+    5.times.map do
+      (0..9).to_a.sample
+    end.join
   end
 
   def key_shift
