@@ -9,7 +9,7 @@ incoming = handle.read
 handle.close
 
 key = Key.new('12345')
-date = Offset.new('240885')
+date = Offset.new('110489')
 encrypt = Encryption.new(incoming, key, date)
 decrypt = Decryption.new(encrypt.encode, key, date)
 enigma = Enigma.new(key, date, encrypt, decrypt)
@@ -18,4 +18,4 @@ writer = File.open(ARGV[1], "w")
 writer.write(enigma.encrypt[:encryption])
 writer.close
 
-puts "Create '#{ARGV[1]}' with the key #{key.key} and the date #{date.date}"
+puts "Created '#{ARGV[1]}' with the key #{key.key} and the date #{date.date}"

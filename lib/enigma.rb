@@ -12,11 +12,11 @@ class Enigma
     @decryption = decryption
   end
 
-  def encrypt(message = @encryption.message, key = @key, date = @date)
+  def encrypt(message = @encryption.message, key = @key.key, date = @date.date)
     return {encryption: @encryption.encode, key: @key.key, date: @date.date}
   end
 
-  def decrypt(message = @decryption.message, key = @key, date = @date)
+  def decrypt(message = @decryption.message, key = @key.key, date = @date.date)
     return {decryption: @decryption.decode, key: @key.key, date: @date.date}
   end
 end

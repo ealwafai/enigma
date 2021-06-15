@@ -18,4 +18,4 @@ writer = File.open(ARGV[1], "w")
 writer.write(decrypt.decode)
 writer.close
 
-puts "Create '#{ARGV[1]}' with the key #{key.key} and the date #{date.date}"
+puts "Created '#{ARGV[1]}' with the key #{key.key} and the date #{date.date}"
