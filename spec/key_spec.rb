@@ -29,7 +29,11 @@ RSpec.describe Key do
       random_key = Key.new
 
       expect(random_key.generate_key).to eq('12345')
-      expect(random_key.key.length).to eq(5)
+      expect(random_key.generate_key.length).to eq(5)
+    end
+
+    it 'can generate a random key' do
+      expect(@key.generate_key.length).to eq(5)
     end
 
     it 'can generate key shift' do
