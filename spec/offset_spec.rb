@@ -20,9 +20,13 @@ RSpec.describe Offset do
     it 'can use today date' do
       allow_any_instance_of(Offset).to receive(:today_date).and_return('140621')
 
-      today_date = Offset.new
+      today = Offset.new
 
-      expect(today_date.today_date).to eq('140621')
+      expect(today.today_date).to eq('140621')
+    end
+
+    it 'can use today date' do
+      expect(@offset.today_date.length).to eq(6)
     end
 
     it 'can square the date' do
